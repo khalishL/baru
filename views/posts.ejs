@@ -42,8 +42,7 @@
             </button>
 
             <button type="button" class="btn btn-text">
-              <%= post.createdAt.toLocaleDateString('en-EN', { weekday: 'long',
-              year: 'numeric', month: 'long', day: 'numeric' }) %>
+              <%= post.timeSince %> | <%= post.postDate %>
             </button>
           </div>
         </div>

@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
-    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
     <%- include("partials/_navbar") %>
@@ -15,19 +14,24 @@
     <p class="error"><%= e.split(':')[1] %></p>
     <% }) %> <% } %> <% } %> -->
 
-    <form action="/register" method="POST">
+    <form action="/api/register" method="POST">
       <div>
         <label for="username">Username:</label>
         <input
           type="text"
-          name="username"
+          name="userName"
           id="username"
           placeholder="johndoe123"
         />
       </div>
       <div>
         <label for="password">Password:</label>
-        <input type="password" name="password" id="password" placeholder="a difficult password"/>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="a difficult password"
+        />
       </div>
       <div>
         <label for="email">Email:</label>
