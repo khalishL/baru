@@ -27,9 +27,12 @@ class UserController {
     })
       .then((user) => {
         if (passwordIsTrue(password, user.password)) {
+          req.session.authenticated = true;
+          req.session.UserId = user.id;
           res.redirect(`/posts`);
+        } else {
+          res.render("loginPage", { error: ["Password tidak sesuai"] });
         }
-        res.render("loginPage", { error: ["Password tidak sesuai"] });
       })
       .catch((err) => {
         console.log(err);

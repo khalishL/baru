@@ -68,7 +68,7 @@ class Controller {
         res.render("posts", { posts });
       })
       .catch((err) => {
-        res.render(err);
+        res.send(err);
       });
   }
 }
