@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Genre</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include("partials/_navbar") %>
+  <h1>Add Post</h1>
+
+  <form action="/post/add" method="POST">
+    <label for="post"> Type anything !</label>
+
+    <input type="text-area" name="post" id="post">
+     
+    <input type="submit" value="Add">
+  </form>
+
+</body>
+</html>

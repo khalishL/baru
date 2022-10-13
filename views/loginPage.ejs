@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<%- include(`partials/_navbar`) %>
+  <h1>Login</h1>
+<!-- 
+  <%if (error) { %>
+    <% if (error.length>0) { %>
+      <% error.forEach(e => { %>
+        <p class="error"><%= e %></p>
+      <% }) %>
+    <% } %>
+  <% } %> -->
+
+  <form action="/login" method="POST">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username">
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password">
+  </div>
+  <div>
+    <p><a href="/register">Don't have an account?</a></p>
+  </div>
+  <div>
+    <input type="submit" value="Login">
+  </div>
+  </form>
+</body>
+</html>

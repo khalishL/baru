@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include("partials/_navbar") %>
+
+    <h1>Register</h1>
+
+    <!-- <%if (error) { %> <% if (error.length>0) { %> <% error.forEach(e => { %>
+    <p class="error"><%= e.split(':')[1] %></p>
+    <% }) %> <% } %> <% } %> -->
+
+    <form action="/register" method="POST">
+      <div>
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="johndoe123"
+        />
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" placeholder="a difficult password"/>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" placeholder="john@doe.com" />
+      </div>
+      <div>
+        <label for="firstName">First name:</label>
+        <input type="text" name="firstName" id="firstName" placeholder="John" />
+      </div>
+      <div>
+        <label for="lastName">Last name:</label>
+        <input type="text" name="lastName" id="lastName" placeholder="Doe" />
+      </div>
+      <div>
+        <input type="submit" value="Register" />
+      </div>
+    </form>
+  </body>
+</html>
