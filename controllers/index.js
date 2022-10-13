@@ -4,18 +4,21 @@ class Controller {
   static home(req, res) {
     res.render("home");
   }
+
+  // API
+  // Get all posts
   static readAllPost(req, res) {
     Post.findAll({
       include: [Tag, User, Like, Comment],
     })
-      .then((post) => {
-        res.send(post);
+      .then((posts) => {
+        res.send(posts);
       })
       .catch((err) => {
         res.send(err);
       });
   }
-
+  // Get post by ID
   static readPostById(req, res) {
     const id = req.params.id;
     Post.findOne({
@@ -29,19 +32,19 @@ class Controller {
         res.send(err);
       });
   }
-
+  // Get all users
   static readAllUser(req, res) {
     User.findAll({
       include: [Like, Profile],
     })
-      .then((post) => {
-        res.send(post);
+      .then((users) => {
+        res.send(users);
       })
       .catch((err) => {
         res.send(err);
       });
   }
-
+  // Get user by ID
   static readUserById(req, res) {
     const id = req.params.id;
     User.findOne({
@@ -56,13 +59,16 @@ class Controller {
       });
   }
 
-  static likeIncrement(req, res) {
-    Comment.increment({ like: 1 }, { where: { id: +req.params.id } })
-      .then(() => {
-        res.redirect("/");
+  // Pages
+  static renderAllPost(req, res) {
+    Post.findAll({
+      include: [Tag, User, Like, Comment],
+    })
+      .then((posts) => {
+        res.render("posts", { posts });
       })
       .catch((err) => {
-        res.send(err);
+        res.render(err);
       });
   }
 }

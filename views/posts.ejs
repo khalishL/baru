@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ActivPost</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include(`partials/_navbar`) %>
+    <div class="container mt-5">
+      <h1>Feeds</h1>
+
+      <p>Welcome, here you can post anything !</p>
+
+      <div class="container">
+        <% posts.forEach((post)=>{ %>
+        <div class="card mb-4">
+          <div class="card-header" style="font-weight: 800">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+              class="rounded-circle"
+              style="width: 48px; margin-right: 12px"
+              alt="Avatar"
+            /><%= post.User.userName %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= post.title %></h5>
+            <p class="card-text"><%= post.content %></p>
+            <p class="card-text">
+              <% post.Tags.forEach((tag)=>{ %>
+              <a href="">#<%= tag.name %></a>
+              <% }) %>
+            </p>
+          </div>
+          <div
+            class="card-footer text-muted d-flex"
+            style="place-content: space-between"
+          >
+            <button type="button" class="btn btn-outline-danger">
+              <%= post.Likes.length %> Likes
+            </button>
+
+            <button type="button" class="btn btn-text">
+              <%= post.createdAt.toLocaleDateString('en-EN', { weekday: 'long',
+              year: 'numeric', month: 'long', day: 'numeric' }) %>
+            </button>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</html>
