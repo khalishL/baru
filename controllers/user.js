@@ -12,8 +12,7 @@ class UserController {
         res.redirect(`/login`);
       })
       .catch((err) => {
-        console.log(err);
-        res.send(err);
+        res.render("register", { error: err.errors });
       });
   }
   static loginGet(req, res) {

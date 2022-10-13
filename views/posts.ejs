@@ -18,20 +18,29 @@
         <div class="card mb-4">
           <div class="card-header" style="font-weight: 800">
             <img
-              src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+              src="<%= post.User.picture %>"
               class="rounded-circle"
               style="width: 48px; margin-right: 12px"
               alt="Avatar"
             /><%= post.User.userName %>
           </div>
-          <div class="card-body">
-            <h5 class="card-title"><%= post.title %></h5>
-            <p class="card-text"><%= post.content %></p>
-            <p class="card-text">
-              <% post.Tags.forEach((tag)=>{ %>
-              <a href="">#<%= tag.name %></a>
-              <% }) %>
-            </p>
+          <div class="card-body" style="display: flex">
+            <div style="width: 60%">
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text"><%= post.content %></p>
+              <p class="card-text">
+                <% post.Tags.forEach((tag)=>{ %>
+                <a href="">#<%= tag.name %></a>
+                <% }) %>
+              </p>
+            </div>
+            <div style="width: 40%">
+              <img
+                src="<%= post.imageUrl %>"
+                alt="<%= post.title %>"
+                style="max-width: 100%; max-height: 100%"
+              />
+            </div>
           </div>
           <div
             class="card-footer text-muted d-flex"

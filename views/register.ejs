@@ -8,11 +8,11 @@
   <body>
     <h1>Register</h1>
 
-    <!-- <%if (error) { %> <% if (error.length>0) { %> <% error.forEach(e => { %>
-    <p class="error"><%= e.split(':')[1] %></p>
-    <% }) %> <% } %> <% } %> -->
+    <%if (error) { %> <% if (error.length > 0) { %> <% error.forEach(e => { %>
+    <p class="error"><%= e.message %></p>
+    <% }) %> <% } %> <% } %>
 
-    <form action="/api/register" method="POST">
+    <form action="/register" method="POST">
       <div>
         <label for="username">Username:</label>
         <input
@@ -45,7 +45,7 @@
       </div>
       <div>
         <input type="submit" value="Register" />
-        atau <a href="/login">Login</a>
+        or <a href="/login">Login</a>
       </div>
     </form>
   </body>

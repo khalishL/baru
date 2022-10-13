@@ -1,22 +1,37 @@
 [
   {
     "userName": "khalish",
-    "password": "pass",
-    "email": "trastanechora@gmail.com"
+    "password": "$2a$10$YAV8Ge3cscvA9IV/BCHMmegRFOg2LCBeYeCWD8eNphz4Sd08pJNNC",
+    "role": "admin",
+    "picture": "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp",
+    "email": "khalishluthfi@gmail.com"
   },
   {
     "userName": "mae",
-    "password": "pass",
-    "email": "trastanechora@gmail.com"
+    "password": "$2a$10$YAV8Ge3cscvA9IV/BCHMmegRFOg2LCBeYeCWD8eNphz4Sd08pJNNC",
+    "role": "admin",
+    "picture": "https://static.wikia.nocookie.net/wii/images/8/89/Pikachu.jpg/revision/latest?cb=20140209205851",
+    "email": "test@gmail.com"
   },
   {
     "userName": "aaa",
-    "password": "pass",
-    "email": "trastanechora@gmail.com"
+    "password": "$2a$10$YAV8Ge3cscvA9IV/BCHMmegRFOg2LCBeYeCWD8eNphz4Sd08pJNNC",
+    "role": "user",
+    "picture": "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp",
+    "email": "ttest@gmail.com"
   },
   {
     "userName": "bbb",
-    "password": "pass",
-    "email": "trastanechora@gmail.com"
+    "password": "$2a$10$YAV8Ge3cscvA9IV/BCHMmegRFOg2LCBeYeCWD8eNphz4Sd08pJNNC",
+    "role": "user",
+    "picture": "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp",
+    "email": "teest@gmail.com"
+  },
+  {
+    "userName": "test",
+    "password": "$2a$10$YAV8Ge3cscvA9IV/BCHMmegRFOg2LCBeYeCWD8eNphz4Sd08pJNNC",
+    "role": "admin",
+    "picture": "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp",
+    "email": "test@gmail.com"
   }
 ]

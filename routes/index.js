@@ -18,7 +18,7 @@ router.get("/api/posts", Controller.readAllPost);
 router.get("/api/posts/:id", Controller.readPostById);
 router.get("/api/users", Controller.readAllUser);
 router.get("/api/users/:id", Controller.readUserById);
-router.post("/api/register", UserController.registerPost);
+router.post("/register", UserController.registerPost);
 
 // Pages
 router.get("/posts", sessionChecker, Controller.renderAllPost);

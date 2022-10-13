@@ -44,6 +44,8 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
+      role: DataTypes.STRING,
+      picture: DataTypes.STRING,
     },
     {
       sequelize,
