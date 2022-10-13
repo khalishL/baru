@@ -1,0 +1,12 @@
+[
+  {
+    "content": "Ini adalah comment nomor 1 oleh Khalish",
+    "UserId": 1,
+    "PostId": 2
+  },
+  {
+    "content": "Ini adalah comment nomor 2 oleh Mae",
+    "UserId": 2,
+    "PostId": 1
+  }
+]

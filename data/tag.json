@@ -1,22 +1,22 @@
 [
   {
-      "name": "Animals"
-      
+    "name": "Animals",
+    "PostId": 1
   },
   {
-      "name": "Technology"
-      
+    "name": "Technology",
+    "PostId": 2
   },
   {
-      "name": "Anime & Manga"
-      
+    "name": "Anime & Manga",
+    "PostId": 3
   },
   {
-      "name": "School"
-      
+    "name": "School",
+    "PostId": 4
   },
   {
-      "name": "Random"
-     
+    "name": "Random",
+    "PostId": 5
   }
 ]
