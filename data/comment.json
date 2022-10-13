@@ -8,5 +8,10 @@
     "content": "Ini adalah comment nomor 2 oleh Mae",
     "UserId": 2,
     "PostId": 1
+  },
+  {
+    "content": "Ini adalah balasan comment nomor 3 oleh Khalish",
+    "UserId": 1,
+    "PostId": 1
   }
 ]

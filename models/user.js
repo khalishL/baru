@@ -11,11 +11,12 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.hasMany(models.Post, { foreignKey: "UserId" });
       User.hasMany(models.Like, { foreignKey: "UserId" });
+      User.hasOne(models.Profile);
     }
   }
   User.init(
     {
-      username: {
+      userName: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
