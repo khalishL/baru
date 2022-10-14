@@ -155,9 +155,19 @@ class Controller {
         res.send(err);
       });
   }
-
   static renderAddPost(req, res) {
     res.render("addPost", { error: [] });
+  }
+  static renderAllUser(req, res) {
+    User.findAll({
+      include: [Like, Profile, Post],
+    })
+      .then((users) => {
+        res.render("users", { users });
+      })
+      .catch((err) => {
+        res.send(err);
+      });
   }
 }
 

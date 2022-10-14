@@ -7,6 +7,11 @@ const sessionChecker = (req, res, next) => {
   else res.redirect("/login");
 };
 
+const adminChecker = (req, res, next) => {
+  if (req.session.role === "admin") next();
+  else res.redirect("/posts");
+};
+
 const sessionDestroyer = (req, res, next) => {
   if (req.session) req.session.destroy();
   next();
@@ -29,6 +34,7 @@ router.get("/posts/add", sessionChecker, Controller.renderAddPost);
 router.get("/posts/:id", sessionChecker, Controller.renderPostById);
 router.get("/register", UserController.registerGet);
 router.get("/login", sessionDestroyer, UserController.loginGet);
+router.get("/users", sessionChecker, adminChecker, Controller.renderAllUser);
 
 // User
 router.post("/login", UserController.loginPost);

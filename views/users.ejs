@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ActivPost</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include(`partials/_navbarAuth`) %>
+    <div class="container mt-5">
+      <div class="container d-flex">
+        <div style="width: 80%">
+          <h1>User List</h1>
+          <p>Only admin can access this page!</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <% users.forEach((user)=>{ %>
+        <div class="card mb-4">
+          <div class="card-header" style="font-weight: 800">
+            <img
+              src="<%= user.picture %>"
+              class="rounded-circle"
+              style="width: 48px; margin-right: 12px"
+              alt="Avatar"
+            /><%= user.userName %>
+          </div>
+          <div class="card-body" style="display: flex">
+            <div style="width: 40%">
+              <p class="card-text">Email: <%= user.email %></p>
+              <p class="card-text">Role: <%= user.role %></p>
+            </div>
+            <div style="width: 60%">
+              <p class="card-text">Post counts: <%= user.Posts.length %></p>
+              <p class="card-text">Like counts: <%= user.Likes.length %></p>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</html>
