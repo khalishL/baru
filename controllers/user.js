@@ -7,11 +7,12 @@ class UserController {
   }
   static registerPost(req, res) {
     let body = req.body;
-    User.create(body)
+    User.create({ ...body, role: "user" })
       .then((addUser) => {
         res.redirect(`/login`);
       })
       .catch((err) => {
+        console.log("err nih", err);
         res.render("register", { error: err.errors });
       });
   }

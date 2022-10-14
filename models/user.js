@@ -1,4 +1,5 @@
 "use strict";
+const nodemailer = require("nodemailer");
 const { hashPassword } = require("../helpers/bcrypt");
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
@@ -54,6 +55,30 @@ module.exports = (sequelize, DataTypes) => {
   );
   User.addHook("beforeCreate", (instance, options) => {
     instance.password = hashPassword(instance.password);
+  });
+  User.addHook("afterCreate", (instance, options) => {
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "khalishluthfi1@gmail.com",
+        pass: "bguhfyojgwywlfnh", // inih sudah pke dummy email real
+      },
+    });
+
+    var mailOptions = {
+      from: "active-post@gmail.com",
+      to: instance.email, // disini bebas masukin emai sapa aja
+      subject: "Congratulations! You now have access to Active Post",
+      text: "Selamat  nilai PP anda adalah 100!",
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
   });
 
   return User;

@@ -58,6 +58,49 @@ class Controller {
         res.send(err);
       });
   }
+  // Add Post
+  static createPost(req, res) {
+    const body = req.body;
+    body.UserId = req.session.UserId;
+    Post.create(body)
+      .then((responsePost) => {
+        res.redirect(`/posts`, { error: [] });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.render("addPost", { error: err });
+      });
+  }
+  // Add Like
+  static createLike(req, res) {
+    const postId = req.params.id;
+    const userId = req.session.UserId;
+    console.log("postId", postId);
+    console.log("userId", userId);
+    Like.findAll({
+      where: { PostId: postId },
+    })
+      .then((likes) => {
+        const likingUsers = likes.map((like) => like.UserId);
+        console.log("likingUsers", likingUsers);
+        if (likingUsers.includes(userId)) {
+          res.redirect("/posts");
+        } else {
+          Like.create({ UserId: userId, PostId: postId })
+            .then((responseLike) => {
+              console.log("responseLike", responseLike);
+              res.redirect(`/posts`);
+            })
+            .catch((err) => {
+              console.log(err);
+              res.redirect("/posts");
+            });
+        }
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
 
   // Pages
   static renderAllPost(req, res) {
@@ -65,11 +108,15 @@ class Controller {
       include: [Tag, User, Like, Comment],
     })
       .then((posts) => {
-        res.render("posts", { posts });
+        res.render("posts", { posts, UserId: req.session.UserId });
       })
       .catch((err) => {
         res.send(err);
       });
+  }
+
+  static renderAddPost(req, res) {
+    res.render("addPost", { error: [] });
   }
 }
 

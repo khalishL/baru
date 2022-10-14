@@ -19,9 +19,12 @@ router.get("/api/posts/:id", Controller.readPostById);
 router.get("/api/users", Controller.readAllUser);
 router.get("/api/users/:id", Controller.readUserById);
 router.post("/register", UserController.registerPost);
+router.post("/posts/add", Controller.createPost);
+router.post("/posts/:id/like", Controller.createLike);
 
 // Pages
 router.get("/posts", sessionChecker, Controller.renderAllPost);
+router.get("/posts/add", sessionChecker, Controller.renderAddPost);
 router.get("/register", UserController.registerGet);
 router.get("/login", sessionDestroyer, UserController.loginGet);
 

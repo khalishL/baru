@@ -6,6 +6,7 @@
     <title>Register</title>
   </head>
   <body>
+    <%- include(`partials/_navbar`) %>
     <h1>Register</h1>
 
     <%if (error) { %> <% if (error.length > 0) { %> <% error.forEach(e => { %>
@@ -42,6 +43,10 @@
       <div>
         <label for="lastName">Last name:</label>
         <input type="text" name="lastName" id="lastName" placeholder="Doe" />
+      </div>
+      <div>
+        <label for="lastName">Profile Picture:</label>
+        <input type="text" name="picture" id="lastName" placeholder="Doe" />
       </div>
       <div>
         <input type="submit" value="Register" />

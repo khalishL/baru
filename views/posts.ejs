@@ -7,11 +7,17 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <%- include(`partials/_navbar`) %>
+    <%- include(`partials/_navbarAuth`) %>
     <div class="container mt-5">
-      <h1>Feeds</h1>
-
-      <p>Welcome, here you can post anything !</p>
+      <div class="container d-flex">
+        <div style="width: 80%">
+          <h1>Feeds</h1>
+          <p>Welcome, here you can post anything !</p>
+        </div>
+        <div style="width: 20%; text-align: right; padding-top: 12px">
+          <a href="/posts/add" class="btn btn-primary">Add Post</a>
+        </div>
+      </div>
 
       <div class="container">
         <% posts.forEach((post)=>{ %>
@@ -46,9 +52,13 @@
             class="card-footer text-muted d-flex"
             style="place-content: space-between"
           >
-            <button type="button" class="btn btn-outline-danger">
-              <%= post.Likes.length %> Likes
-            </button>
+            <form action="/posts/<%= post.id %>/like" method="POST">
+              <input
+                type="submit"
+                class="btn btn-outline-danger"
+                value="<%= post.Likes.length %> Likes"
+              />
+            </form>
 
             <button type="button" class="btn btn-text">
               <%= post.timeSince %> | <%= post.postDate %>
