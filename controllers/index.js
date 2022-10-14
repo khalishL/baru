@@ -1,4 +1,5 @@
 const { Post, Tag, User, Like, Comment, Profile } = require("../models");
+const { Op } = require("sequelize");
 
 class Controller {
   static home(req, res) {
@@ -64,7 +65,7 @@ class Controller {
     body.UserId = req.session.UserId;
     Post.create(body)
       .then((responsePost) => {
-        res.redirect(`/posts`, { error: [] });
+        res.redirect(`/posts`);
       })
       .catch((err) => {
         console.log(err);
@@ -134,8 +135,16 @@ class Controller {
 
   // Pages
   static renderAllPost(req, res) {
+    const { title } = req.query;
+    const options = {};
+
+    if (title) {
+      options.title = { [Op.iLike]: `%${title}%` };
+    }
+
     Post.findAll({
       include: [Tag, User, Like, Comment],
+      where: options,
     })
       .then((posts) => {
         res.render("posts", { posts, UserId: req.session.UserId });
