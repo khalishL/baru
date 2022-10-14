@@ -27,6 +27,7 @@ router.post("/register", UserController.registerPost);
 router.post("/posts/add", Controller.createPost);
 router.post("/posts/:id/like", Controller.createLike);
 router.post("/comments/:id/add", Controller.createComment);
+router.post("/users/:id/delete", Controller.deleteUser);
 
 // Pages
 router.get("/posts", sessionChecker, Controller.renderAllPost);

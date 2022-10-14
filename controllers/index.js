@@ -115,6 +115,22 @@ class Controller {
         res.render(`/posts/${postId}`, { error: err });
       });
   }
+  // Delete User
+  static deleteUser(req, res) {
+    const userId = req.params.id;
+    User.destroy({
+      where: {
+        id: userId,
+      },
+    })
+      .then((responseDelete) => {
+        res.redirect(`/users`);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.render(`/users`, { error: err });
+      });
+  }
 
   // Pages
   static renderAllPost(req, res) {
