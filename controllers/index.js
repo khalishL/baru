@@ -101,6 +101,20 @@ class Controller {
         res.send(err);
       });
   }
+  // Add Comment
+  static createComment(req, res) {
+    const content = req.body.content;
+    const postId = req.params.id;
+    const userId = req.session.UserId;
+    Comment.create({ content, PostId: postId, UserId: userId })
+      .then((responseComment) => {
+        res.redirect(`/posts/${postId}`);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.render(`/posts/${postId}`, { error: err });
+      });
+  }
 
   // Pages
   static renderAllPost(req, res) {
@@ -111,6 +125,33 @@ class Controller {
         res.render("posts", { posts, UserId: req.session.UserId });
       })
       .catch((err) => {
+        res.send(err);
+      });
+  }
+  static renderPostById(req, res) {
+    const id = req.params.id;
+    let savedPost = null;
+    Post.findOne({
+      include: [Tag, User, Like],
+      where: {
+        id: id,
+      },
+    })
+      .then((post) => {
+        savedPost = post;
+        console.log("post", post);
+        return Comment.findAll({
+          include: [User],
+          where: {
+            PostId: id,
+          },
+        });
+      })
+      .then((comments) => {
+        res.render("postDetail", { comments, post: savedPost });
+      })
+      .catch((err) => {
+        console.log("err", err);
         res.send(err);
       });
   }

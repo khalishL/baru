@@ -20,7 +20,6 @@
       </div>
 
       <div class="container">
-        <% posts.forEach((post)=>{ %>
         <div class="card mb-4">
           <div class="card-header" style="font-weight: 800">
             <img
@@ -59,16 +58,54 @@
                 value="<%= post.Likes.length %> Likes"
               />
             </form>
-            <a href="/posts/<%= post.id %>" class="btn btn-outline-primary">
-              <%= post.Comments.length %> Comments
-            </a>
 
             <button type="button" class="btn btn-text">
               <%= post.timeSince %> | <%= post.postDate %>
             </button>
           </div>
         </div>
+      </div>
+
+      <div class="container">
+        <% comments.forEach((comment)=>{ %>
+        <div class="card mb-1">
+          <div class="card-header" style="font-weight: 800">
+            <img
+              src="<%= comment.User.picture %>"
+              class="rounded-circle"
+              style="width: 48px; margin-right: 12px"
+              alt="Avatar"
+            /><%= comment.User.userName %>
+          </div>
+          <div class="card-body" style="display: flex">
+            <div style="width: 60%">
+              <p class="card-text"><%= comment.content %></p>
+            </div>
+          </div>
+        </div>
         <% }) %>
+      </div>
+
+      <div class="container my-4">
+        <div class="card">
+          <div class="card-header" style="font-weight: 800">
+            <h4>Add Comment</h4>
+          </div>
+          <div class="card-body">
+            <form action="/comments/<%= post.id %>/add" method="POST">
+              <div class="form-group">
+                <label for="comment">Comment</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="content"
+                  id="comment"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </body>

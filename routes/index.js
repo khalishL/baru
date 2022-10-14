@@ -21,10 +21,12 @@ router.get("/api/users/:id", Controller.readUserById);
 router.post("/register", UserController.registerPost);
 router.post("/posts/add", Controller.createPost);
 router.post("/posts/:id/like", Controller.createLike);
+router.post("/comments/:id/add", Controller.createComment);
 
 // Pages
 router.get("/posts", sessionChecker, Controller.renderAllPost);
 router.get("/posts/add", sessionChecker, Controller.renderAddPost);
+router.get("/posts/:id", sessionChecker, Controller.renderPostById);
 router.get("/register", UserController.registerGet);
 router.get("/login", sessionDestroyer, UserController.loginGet);
 
